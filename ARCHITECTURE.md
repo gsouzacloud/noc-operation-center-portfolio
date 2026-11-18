@@ -1,4 +1,4 @@
-# Architecture — Ananim NOC
+# Architecture — NOC Operation Center
 
 [English](#english) · [Português](#português)
 
@@ -9,7 +9,7 @@ Logical diagram — no addresses, credentials or client topology.
 ```mermaid
 flowchart LR
   A[Agents and collectors] --> B[Monitoring platform]
-  B --> C[Ananim NOC PHP API]
+  B --> C[NOC Operation Center PHP API]
   D[Cloud inventory and scheduler] --> C
   E[Security integrations: EDR, cloud audit, RDP protection] --> C
   C --> F[Cache, ledgers and history]
@@ -48,7 +48,7 @@ Diagrama lógico — sem endereços, credenciais ou topologia de clientes.
 ```mermaid
 flowchart LR
   A[Agentes e coletores] --> B[Plataforma de monitoramento]
-  B --> C[Ananim NOC PHP API]
+  B --> C[NOC Operation Center PHP API]
   D[Inventário e agendador cloud] --> C
   E[Integrações de segurança: EDR, auditoria cloud, proteção RDP] --> C
   C --> F[Cache, ledgers e histórico]

@@ -1,4 +1,4 @@
-# Ananim NOC
+# NOC Operation Center
 
 **Observabilidade · Correlação · Usuários · Segurança · Operações**
 
@@ -6,13 +6,13 @@
 
 Portal de operação que conecta infraestrutura, aplicações e experiência dos usuários. Reúne disponibilidade, métricas, serviços, processos, logs, sessões, Active Directory, saúde SAP/HANA, EDR, auditoria da nuvem, VPN e backups em uma visão por cliente e por servidor — para a equipe responder *quem estava conectado, em qual host, o que aconteceu naquele período e quais sinais técnicos explicam o impacto*.
 
-![Ananim NOC — dashboard executivo (interface real, dados anonimizados)](overview.png)
+![NOC Operation Center — dashboard executivo (interface real, dados anonimizados)](overview.png)
 
-> **Portfólio de Gustavo Souza.** **Sobre as imagens:** são capturas reais da interface em produção (novembro/2026). Nomes de clientes, hostnames, IPs, usuários, e-mails e domínios foram substituídos automaticamente no momento da captura por nomes fictícios (ex.: `CLIENTE ALFA`, `app2.exemplo.com`, `usuario.1`, `10.20.x.x`); valores financeiros estão embaralhados. Layout, funcionalidades e fluxos são exatamente os que rodam em produção.
+> **Portfólio de Gustavo Souza.** **Sobre as imagens:** são capturas reais da interface em produção (novembro/2026). Nomes de clientes, hostnames, IPs, usuários, e-mails e domínios foram substituídos automaticamente no momento da captura por nomes fictícios (ex.: `CLIENTE ALFA`, `app2.exemplo.com`, `usuario.1`, `10.20.x.x`); nomes das contas cloud e a marca da operadora aparecem borrados; valores financeiros estão embaralhados. Layout, funcionalidades e fluxos são exatamente os que rodam em produção.
 
 ## O problema
 
-Uma lista de alarmes, sozinha, não explica o impacto no cliente. Manutenção programada, desligamento fora do horário comercial, falha de coleta e falha real precisam ser separados; senão a equipe corre atrás de ruído e perde o que importa. O Ananim NOC adiciona esse contexto: agendas esperadas, comportamento aprendido, correlação e escopo por cliente.
+Uma lista de alarmes, sozinha, não explica o impacto no cliente. Manutenção programada, desligamento fora do horário comercial, falha de coleta e falha real precisam ser separados; senão a equipe corre atrás de ruído e perde o que importa. O NOC Operation Center adiciona esse contexto: agendas esperadas, comportamento aprendido, correlação e escopo por cliente.
 
 ## Resumo
 
@@ -32,7 +32,7 @@ Uma lista de alarmes, sozinha, não explica o impacto no cliente. Manutenção p
 
 ## White-label e pronto para SaaS
 
-O Ananim NOC foi construído para ser **white-label**. Nome, logo, cores, papel timbrado dos relatórios, lista de clientes, contas cloud e integrações são configuração — não estão fixos no código. A mesma plataforma pode ser:
+O NOC Operation Center foi construído para ser **white-label**. Nome, logo, cores, papel timbrado dos relatórios, lista de clientes, contas cloud e integrações são configuração — não estão fixos no código. A mesma plataforma pode ser:
 
 - **implantada para qualquer empresa** — MSP, revenda de cloud, provedor de serviços gerenciados ou time interno de TI;
 - **operada como single-tenant** (uma empresa, na própria infraestrutura) ou **multi-tenant**, com cada cliente isolado por escopo validado no backend;
@@ -262,7 +262,7 @@ Alertas, logs e métricas ficam na mesma janela de investigação. Em vez de ana
 ```mermaid
 flowchart LR
   A[Agentes e coletores] --> B[Plataforma de monitoramento]
-  B --> C[Ananim NOC PHP API]
+  B --> C[NOC Operation Center PHP API]
   D[Inventário e agendador cloud] --> C
   E[Integrações de segurança: EDR, auditoria cloud, proteção RDP] --> C
   C --> F[Cache, ledgers e histórico]
@@ -299,8 +299,8 @@ O código-fonte é mantido em repositório privado. Este repositório é um port
 
 ## Projetos relacionados
 
-- [Ananim NOC](https://github.com/gsouzacloud/ananim-noc-portfolio) — operação, correlação, usuários e segurança
-- [AnanimCloudReport](https://github.com/gsouzacloud/ananim-cloud-report-portfolio) — FinOps e governança cloud
-- [Ananim Shield](https://github.com/gsouzacloud/ananim-application-shield-portfolio) — WAF e segurança de aplicações
+- [NOC Operation Center](https://github.com/gsouzacloud/noc-operation-center-portfolio) — operação, correlação, usuários e segurança
+- [Cloud Report](https://github.com/gsouzacloud/cloud-report-portfolio) — FinOps e governança cloud
+- [Shield](https://github.com/gsouzacloud/shield-portfolio) — WAF e segurança de aplicações
 
 [Gustavo Souza no GitHub](https://github.com/gsouzacloud) · Documentação atualizada em 18/11/2026.

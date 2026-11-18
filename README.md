@@ -1,4 +1,4 @@
-# Ananim NOC
+# NOC Operation Center
 
 **Observability · Correlation · Users · Security · Operations**
 
@@ -6,13 +6,13 @@
 
 An operations portal that connects infrastructure, applications and user experience. It brings together availability, metrics, services, processes, logs, sessions, Active Directory, SAP/HANA health, EDR, cloud audit, VPN and backups in one view per client and per server — so the team can answer *who was connected, on which host, what happened in that period and which technical signals explain the impact*.
 
-![Ananim NOC — executive dashboard (real interface, anonymized data)](overview.png)
+![NOC Operation Center — executive dashboard (real interface, anonymized data)](overview.png)
 
-> **Portfolio of Gustavo Souza.** **About the screenshots:** they are real captures of the production interface (November 2026). Client names, hostnames, IP addresses, users, e-mails and domains were replaced automatically at capture time by fictitious ones (e.g. `CLIENTE ALFA`, `app2.exemplo.com`, `usuario.1`, `10.20.x.x`); financial values are scrambled. Layout, features and workflows are exactly what runs in production.
+> **Portfolio of Gustavo Souza.** **About the screenshots:** they are real captures of the production interface (November 2026). Client names, hostnames, IP addresses, users, e-mails and domains were replaced automatically at capture time by fictitious ones (e.g. `CLIENTE ALFA`, `app2.exemplo.com`, `usuario.1`, `10.20.x.x`); cloud account names and the operator's brand are blurred; financial values are scrambled. Layout, features and workflows are exactly what runs in production.
 
 ## The problem
 
-A list of alarms alone does not explain the impact on a client. Scheduled maintenance, business-hours shutdowns, collection gaps and real failures must be told apart, otherwise the team chases noise and misses what matters. Ananim NOC adds that context: expected schedules, learned behavior, correlation and per-client scope.
+A list of alarms alone does not explain the impact on a client. Scheduled maintenance, business-hours shutdowns, collection gaps and real failures must be told apart, otherwise the team chases noise and misses what matters. NOC Operation Center adds that context: expected schedules, learned behavior, correlation and per-client scope.
 
 ## At a glance
 
@@ -32,7 +32,7 @@ A list of alarms alone does not explain the impact on a client. Scheduled mainte
 
 ## White-label and SaaS-ready
 
-Ananim NOC was built to be **white-label**. Brand name, logo, colors, report letterhead, tenant list, cloud accounts and integrations are configuration — not hard-coded. The same platform can be:
+NOC Operation Center was built to be **white-label**. Brand name, logo, colors, report letterhead, tenant list, cloud accounts and integrations are configuration — not hard-coded. The same platform can be:
 
 - **deployed for any company** — an MSP, a cloud reseller, a managed-services provider or an internal IT team;
 - **run single-tenant** (one company, on its own infrastructure) or **multi-tenant**, with every tenant isolated by scope validated in the backend;
@@ -262,7 +262,7 @@ Alerts, logs and metrics are placed in the same investigation window. Instead of
 ```mermaid
 flowchart LR
   A[Agents and collectors] --> B[Monitoring platform]
-  B --> C[Ananim NOC PHP API]
+  B --> C[NOC Operation Center PHP API]
   D[Cloud inventory and scheduler] --> C
   E[Security integrations: EDR, cloud audit, RDP protection] --> C
   C --> F[Cache, ledgers and history]
@@ -299,8 +299,8 @@ The source code is kept in a private repository. This repository is a portfolio:
 
 ## Related projects
 
-- [Ananim NOC](https://github.com/gsouzacloud/ananim-noc-portfolio) — operations, correlation, users & security
-- [AnanimCloudReport](https://github.com/gsouzacloud/ananim-cloud-report-portfolio) — cloud FinOps & governance
-- [Ananim Shield](https://github.com/gsouzacloud/ananim-application-shield-portfolio) — WAF & application security
+- [NOC Operation Center](https://github.com/gsouzacloud/noc-operation-center-portfolio) — operations, correlation, users & security
+- [Cloud Report](https://github.com/gsouzacloud/cloud-report-portfolio) — cloud FinOps & governance
+- [Shield](https://github.com/gsouzacloud/shield-portfolio) — WAF & application security
 
 [Gustavo Souza on GitHub](https://github.com/gsouzacloud) · Documentation updated November 18, 2026.

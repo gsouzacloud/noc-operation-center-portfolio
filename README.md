@@ -1,9 +1,9 @@
 # Ananim NOC
 
-**Observability & Operations**  
+**Observabilidade • Correlação • Usuários • Segurança • Operações**  
 Contexto operacional para agir com evidência.
 
-Portal de operação que reúne disponibilidade, telemetria, serviços, inventário, segurança e saúde de aplicações em uma visão por cliente e servidor. Foi concebido para aproximar o alerta técnico do contexto necessário para investigar e comunicar um incidente.
+Portal de operação que conecta infraestrutura, aplicações e experiência dos usuários. Reúne disponibilidade, métricas, serviços, processos, eventos, sessões, Active Directory e saúde SAP/HANA em uma visão por cliente e servidor. Permite investigar quem estava conectado, em qual host, o que ocorreu naquele período e quais sinais técnicos podem explicar o impacto observado.
 
 ![Visão demonstrativa de Ananim NOC, com dados fictícios](overview.png)
 
@@ -27,6 +27,47 @@ A relação abaixo foi preparada a partir dos módulos e registros técnicos do 
 | Alertas e comunicação | Regras, deduplicação, persistência, recuperação e relatórios por cliente. | Reduzir repetição de alertas e produzir comunicação com contexto. |
 | Portal por cliente | Visões segregadas, perfis de acesso e MFA. | Oferecer acompanhamento sem expor o ambiente de outros clientes. |
 
+## Correlação: entender a sequência e o impacto
+
+O painel reúne alertas, logs e métricas na mesma janela de investigação. Em vez de analisar cada sintoma isoladamente, o operador acompanha a sequência dos eventos e suas possíveis relações:
+
+- **Episódios por servidor:** agrupa eventos próximos no tempo; um reboot seguido por várias quedas de serviço pode ser analisado como um episódio.
+- **Recorrência:** destaca alertas que se repetem, sua distribuição temporal e cadência para investigar problemas crônicos.
+- **Diagnóstico por papel:** considera se o servidor atende SAP, HANA, SQL, Active Directory ou sessões RDS ao apresentar hipóteses e caminhos de verificação.
+- **Impacto nos usuários:** compara a evolução de usuários e sessões com alertas, CPU, memória, paginação e reinícios de serviços.
+- **Operação esperada:** considera padrões de liga/desliga e reinícios programados para distinguir rotina operacional de eventos inesperados.
+- **Evidências:** mantém o contexto de horários, logs e métricas que sustentam a investigação. A hipótese indicada precisa ser confirmada; proximidade temporal não comprova causa.
+
+## Visão de usuários, Active Directory e sessões
+
+| Pergunta operacional | Visão oferecida |
+|---|---|
+| Quem está conectado e onde? | Detalhamento por cliente, servidor de sessão e usuário, conforme a última coleta disponível. |
+| Quantos usuários utilizam os servidores de sessão SAP? | Contagens e histórico por host, com comparação temporal aos alertas. Sessão no host e processo do cliente SAP são sinais distintos de uso. |
+| Quantas contas existem e quantas são utilizadas? | Comparação entre contas cadastradas/habilitadas no AD, usuários observados em sessões no período de 90 dias e conectados na última coleta. |
+| Houve desconexões durante um incidente? | Eventos e histórico de sessões para comparar quedas de conexão com pressão de recursos ou reinício de serviço. |
+| O que os logs mostram sobre uma conta? | Consulta contextual de eventos por usuário, cliente, host e período, dentro das fontes e da retenção disponíveis. |
+| Como analisar diretórios compartilhados? | Organização por cliente e deduplicação nos totalizadores para reduzir dupla contagem de réplicas do mesmo diretório. |
+
+O painel distingue **conta habilitada**, **usuário observado no histórico** e **sessão conectada**. Esses indicadores respondem perguntas diferentes. Uma sessão RDP não comprova, sozinha, uma operação dentro do SAP ou acesso a determinado arquivo.
+
+## Segurança e investigação de eventos
+
+As visões de segurança utilizam eventos Windows coletados, incluindo falhas de logon, bloqueios de conta, limpeza do log de auditoria e alterações de contas ou grupos administrativos. Rajadas de falhas podem ser destacadas para investigação, mas não demonstram, sozinhas, invasão ou intenção maliciosa.
+
+Logs de Application e System ajudam a contextualizar falhas de aplicação e serviço. Integrações de proteção de endpoints complementam essa análise quando configuradas. A investigação deve separar tentativa rejeitada, autenticação aceita e ação administrativa efetivamente registrada.
+
+## Mais recursos operacionais
+
+- **SAP/HANA:** saúde de serviços e recursos, informações de coletores e contexto para investigação de aplicações empresariais.
+- **Processos e discos:** consulta de consumo e capacidade para investigar pressão de recursos e apoiar planejamento.
+- **Inventário e topologia:** contexto dos servidores e relações do ambiente para orientar a navegação técnica.
+- **VPN, DNS e backups:** módulos de acompanhamento conforme as integrações e fontes configuradas.
+- **Disponibilidade:** agenda operacional, telemetria e histórico persistente para produzir indicadores com contexto.
+- **Relatórios e exportações:** consolidação de informações por cliente para operação, gestão e investigações autorizadas.
+- **Alertas correlacionados:** comunicação com contexto de incidente, deduplicação e recuperação, conforme configuração.
+- **Portal segregado e MFA:** acompanhamento por cliente com controle de escopo e acesso.
+
 ## Como funciona
 
 ```mermaid
@@ -47,7 +88,7 @@ Veja as decisões e os limites da arquitetura em [ARCHITECTURE.md](ARCHITECTURE.
 
 ## Exemplo de uso
 
-Uma equipe recebe um alerta de serviço. Pelo portal, identifica cliente e servidor, verifica se o recurso deveria estar ativo, compara telemetria e eventos e registra uma hipótese sustentada por evidências. A comunicação informa o que foi observado e o que ainda precisa ser confirmado.
+Usuários relatam desconexões do SAP. A equipe seleciona o cliente e o período, identifica os servidores de sessão e compara a queda de usuários conectados com memória, paginação, reinícios de serviços e eventos Windows. Em seguida, verifica se houve reboot programado, agrupa os sintomas do mesmo episódio e registra a hipótese com as evidências encontradas. O relatório diferencia o impacto observado da causa ainda em validação.
 
 ## Competências demonstradas
 

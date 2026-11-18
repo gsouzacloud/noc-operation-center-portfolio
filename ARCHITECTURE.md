@@ -14,6 +14,14 @@ flowchart LR
   G --> I[Visão interna e portal segregado]
 ```
 
+## Da coleta à investigação
+
+As fontes fornecem métricas, eventos Windows, sinais de serviços e processos, inventário de contas AD e observações de sessões. O portal associa essas informações ao cliente, ao host e ao período consultado.
+
+O fluxo de correlação organiza episódios temporais, recorrências e contexto do papel do servidor. A interface permite comparar os sinais técnicos com o histórico de usuários e sessões. Isso oferece uma visão do impacto percebido, mantendo separadas a observação, a hipótese e a confirmação de causa.
+
+Contas AD e sessões têm semânticas distintas. Totalizadores precisam tratar diretórios compartilhados e evitar duplicar contas por réplica de controlador de domínio. Dados ausentes ou antigos devem manter seu contexto de atualização e coleta.
+
 ## Decisões de engenharia
 
 ### Disponibilidade baseada em contexto

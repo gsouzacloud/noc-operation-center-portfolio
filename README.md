@@ -1,6 +1,7 @@
 # Ananim NOC
 
-**Observabilidade • Correlação • Usuários • Segurança • Operações**  
+**Observabilidade • Correlação • Usuários • Segurança • Operações**
+
 Contexto operacional para agir com evidência.
 
 Portal de operação que conecta infraestrutura, aplicações e experiência dos usuários. Reúne disponibilidade, métricas, serviços, processos, eventos, sessões, Active Directory e saúde SAP/HANA em uma visão por cliente e servidor. Permite investigar quem estava conectado, em qual host, o que ocorreu naquele período e quais sinais técnicos podem explicar o impacto observado.
